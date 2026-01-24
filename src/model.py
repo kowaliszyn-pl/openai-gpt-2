@@ -1,6 +1,23 @@
 import numpy as np
-import tensorflow as tf
-from tensorflow.contrib.training import HParams
+#import tensorflow as tf
+from dataclasses import dataclass
+import tensorflow.compat.v1 as tf
+
+tf.disable_v2_behavior()
+
+@dataclass
+class HParams:
+    n_vocab:int=0
+    n_ctx:int=1024
+    n_embd:int=768
+    n_head:int=12
+    n_layer:int=12
+
+    def override_from_dict(self, values: dict):
+        for key, value in values.items():
+            if not hasattr(self, key):
+                raise ValueError(f"Unknown hparam: {key}")
+            setattr(self, key, value)
 
 def default_hparams():
     return HParams(

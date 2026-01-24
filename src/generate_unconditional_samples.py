@@ -4,9 +4,11 @@ import fire
 import json
 import os
 import numpy as np
-import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 import model, sample, encoder
+
+tf.disable_v2_behavior()
 
 def sample_model(
     model_name='124M',

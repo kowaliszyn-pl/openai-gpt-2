@@ -11,14 +11,8 @@ Then, follow instructions for either native or Docker installation.
 
 All steps can optionally be done in a virtual environment using tools such as `virtualenv` or `conda`.
 
-Install tensorflow 1.12 (with GPU support, if you have a GPU and want everything to run faster)
-```
-pip3 install tensorflow==1.12.0
-```
-or
-```
-pip3 install tensorflow-gpu==1.12.0
-```
+pip install tensorflow
+pip install --upgrade tf_slim
 
 Install other python packages:
 ```
@@ -53,36 +47,39 @@ docker run --runtime=nvidia -it gpt-2 bash
 | WARNING: Samples are unfiltered and may contain offensive content. |
 | --- |
 
-Some of the examples below may include Unicode text characters. Set the environment variable:
+Some of the examples below may include Unicode text characters. Set the environment variable (PS):
+
 ```
-export PYTHONIOENCODING=UTF-8
+$env:PYTHONIOENCODING = "UTF-8"
 ```
+
 to override the standard stream settings in UTF-8 mode.
 
 ## Unconditional sample generation
 
-To generate unconditional samples from the small model:
+To generate unconditional samples from the small model (you have to have the c:\tmp directory created beforehand), use:
+
 ```
-python3 src/generate_unconditional_samples.py | tee /tmp/samples
+python src/generate_unconditional_samples.py | tee /tmp/samples
 ```
 There are various flags for controlling the samples:
 ```
-python3 src/generate_unconditional_samples.py --top_k 40 --temperature 0.7 | tee /tmp/samples
+python src/generate_unconditional_samples.py --top_k 40 --temperature 0.7 | tee /tmp/samples
 ```
 
 To check flag descriptions, use:
 ```
-python3 src/generate_unconditional_samples.py -- --help
+python src/generate_unconditional_samples.py -- --help
 ```
 
 ## Conditional sample generation
 
 To give the model custom prompts, you can use:
 ```
-python3 src/interactive_conditional_samples.py --top_k 40
+python src/interactive_conditional_samples.py --top_k 40
 ```
 
 To check flag descriptions, use:
 ```
-python3 src/interactive_conditional_samples.py -- --help
+python src/interactive_conditional_samples.py -- --help
 ```
