@@ -22,15 +22,15 @@ pip3 install tensorflow-gpu==1.12.0
 
 Install other python packages:
 ```
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Download the model data
 ```
-python3 download_model.py 124M
-python3 download_model.py 355M
-python3 download_model.py 774M
-python3 download_model.py 1558M
+python download_model.py 124M
+python download_model.py 355M
+python download_model.py 774M
+python download_model.py 1558M
 ```
 
 ## Docker Installation
