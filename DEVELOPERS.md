@@ -84,8 +84,14 @@ To check flag descriptions, use:
 ```
 python src/interactive_conditional_samples.py -- --help
 ```
+
+For a deterministic output, set temperature to 0 and top_k to 1:
+```
+python src/interactive_conditional_samples.py --top_k 1 --temperature 0
+```
+
 # Running with a GPU on Windows
 
-The last version of TensorFlow supporting GPU on Windows is 2.10. Newer versions only support GPU on Linux and macOS. This version only works with Python 3.7-3.10.
+The last version of TensorFlow supporting GPU on Windows is 2.10. Newer versions only support GPU on Linux and macOS. TensorFlow 2.10 only works with Python 3.7-3.10.
 
-Required steps are described here: https://www.tensorflow.org/install/pip
+Required steps to install TensorFlow in such configuration are described here: https://www.tensorflow.org/install/pip
