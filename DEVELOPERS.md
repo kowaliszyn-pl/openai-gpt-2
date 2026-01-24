@@ -9,6 +9,8 @@ Then, follow instructions for either native or Docker installation.
 
 ## Native Installation
 
+*Important notes about Windows and GPU below*
+
 All steps can optionally be done in a virtual environment using tools such as `venv` or `conda`.
 ```
 pip install tensorflow
@@ -82,3 +84,8 @@ To check flag descriptions, use:
 ```
 python src/interactive_conditional_samples.py -- --help
 ```
+# Running with a GPU on Windows
+
+The last version of TensorFlow supporting GPU on Windows is 2.10. Newer versions only support GPU on Linux and macOS. This version only works with Python 3.7-3.10.
+
+Required steps are described here: https://www.tensorflow.org/install/pip
