@@ -5,10 +5,14 @@ import json
 import os
 import numpy as np
 import tensorflow.compat.v1 as tf
+from tensorflow.python.client import device_lib
 
 import model, sample, encoder
 
 tf.disable_v2_behavior()
+
+# List available devices (should show GPU if available)
+print(device_lib.list_local_devices())
 
 def interact_model(
     model_name='124M',

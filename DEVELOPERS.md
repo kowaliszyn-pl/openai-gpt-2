@@ -9,10 +9,10 @@ Then, follow instructions for either native or Docker installation.
 
 ## Native Installation
 
-All steps can optionally be done in a virtual environment using tools such as `virtualenv` or `conda`.
-
+All steps can optionally be done in a virtual environment using tools such as `venv` or `conda`.
+```
 pip install tensorflow
-pip install --upgrade tf_slim
+```
 
 Install other python packages:
 ```
@@ -48,7 +48,6 @@ docker run --runtime=nvidia -it gpt-2 bash
 | --- |
 
 Some of the examples below may include Unicode text characters. Set the environment variable (PS):
-
 ```
 $env:PYTHONIOENCODING = "UTF-8"
 ```
@@ -58,10 +57,10 @@ to override the standard stream settings in UTF-8 mode.
 ## Unconditional sample generation
 
 To generate unconditional samples from the small model (you have to have the c:\tmp directory created beforehand), use:
-
 ```
 python src/generate_unconditional_samples.py | tee /tmp/samples
 ```
+
 There are various flags for controlling the samples:
 ```
 python src/generate_unconditional_samples.py --top_k 40 --temperature 0.7 | tee /tmp/samples
