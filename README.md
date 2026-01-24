@@ -1,3 +1,7 @@
+**This repo is a fork of https://github.com/openai/gpt-2**
+
+# Here goes the original README.md content:
+
 **Status:** Archive (code is provided as-is, no updates expected)
 
 # gpt-2
