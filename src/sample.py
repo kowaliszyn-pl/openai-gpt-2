@@ -62,10 +62,22 @@ def sample_sequence(*, hparams, length, start_token=None, batch_size=None, conte
         def body(past, prev, output):
             next_outputs = step(hparams, prev, past=past)
 
-            logits = next_outputs['logits'][:, -1, :] / tf.to_float(temperature)
-            logits = top_k_logits(logits, k=top_k)
-            logits = top_p_logits(logits, p=top_p)
-            samples = tf.multinomial(logits, num_samples=1, output_dtype=tf.int32)
+            logits = next_outputs['logits'][:, -1, :]
+            
+            def sample_with_temperature():
+                scaled_logits = logits / tf.to_float(temperature)
+                scaled_logits = top_k_logits(scaled_logits, k=top_k)
+                scaled_logits = top_p_logits(scaled_logits, p=top_p)
+                return tf.multinomial(scaled_logits, num_samples=1, output_dtype=tf.int32)
+
+            def argmax_sample():
+                return tf.expand_dims(tf.argmax(logits, axis=-1, output_type=tf.int32), axis=-1)
+
+            samples = tf.cond(
+                tf.equal(temperature, 0),
+                argmax_sample,
+                sample_with_temperature
+            )
             return [
                 next_outputs['presents'] if past is None else tf.concat([past, next_outputs['presents']], axis=-2),
                 samples,
