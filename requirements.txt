@@ -1,4 +1,6 @@
-fire
-regex
-requests
-tqdm
+fire==0.7.1
+matplotlib==3.10.8
+regex==2026.1.15
+tensorflow==2.20.0
+tf-slim==1.1.0
+tqdm==4.67.1
